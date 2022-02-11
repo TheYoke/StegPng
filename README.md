@@ -7,7 +7,7 @@ Conceal your secret message in an ordinary PNG image
 - Pillow
 
 ### Description
-`encoder.py` encodes your file's data into the least significant bit of each random pixel in an random order.  
+`encoder.py` encodes your file's data into the least significant bit of each random channel of random pixel in an random order.  
 `decoder.py` reverses the encoder's process and outputs the encoded file.
 
 ![an ordinary summation](sum_a2b.png)
