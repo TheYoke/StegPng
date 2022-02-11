@@ -20,6 +20,10 @@ if __name__ == '__main__':
     OUT_FILE = sys.argv[2]
 
     im = Image.open(IN_IMAGE)
+    if im.format != 'PNG':
+        print("Only .png image can be decoded.")
+        exit(1)
+
     width, height, channel = im.width, im.height, len(im.getbands())
     n_bits = width * height * channel
 

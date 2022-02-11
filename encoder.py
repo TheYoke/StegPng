@@ -17,7 +17,7 @@ if __name__ == '__main__':
         print(f'{sys.argv[0]} IN_FILE IN_IMAGE [OUT_IMAGE]')
         print('IN_FILE: Path to a file you want to encode to the image.')
         print('IN_IMAGE: Path to an image you want to encode the file to.')
-        print('OUT_IMAGE: Path you want to save the encoded image to. (default: suffix IN_IMAGE with "_encoded")')
+        print('OUT_IMAGE: Path you want to save the encoded image to. (default: suffix IN_IMAGE with "_encoded.png")')
         exit(1)
 
     IN_FILE = sys.argv[1]
@@ -25,9 +25,11 @@ if __name__ == '__main__':
 
     if len(sys.argv) >= 4:
         OUT_IMAGE = sys.argv[3]
+        if splitext(OUT_IMAGE)[1].lower() != '.png':
+            print('Error: OUT_IMAGE file extension should be ".png"')
+            exit(1)
     else:
-        name, ext = splitext(IN_IMAGE)
-        OUT_IMAGE = name + "_encoded" + ext
+        OUT_IMAGE = splitext(IN_IMAGE)[0] + "_encoded.png"
 
     im = Image.open(IN_IMAGE)
     width, height, channel = im.width, im.height, len(im.getbands())
